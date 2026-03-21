@@ -2,7 +2,7 @@ import { Plant } from './Classes.js';
 import goalData from './PlantGoals.json' assert {type: 'json'}
 
 
-function makePlant(goalId, goalsList) {
+function MakePlant(goalId, goalsList) {
     const goalsArray = goalsList["Plant Goals"];
     const goal = goalsArray.find(g => g.GoalID === goalId);
     if (goal) {
@@ -32,7 +32,7 @@ function GrowPlant() {
     else {
         console.log("Your Plant is at its first growth stage.");
     }
-    
+
     if (plant.plantStage === 3) {
         console.log("Congratulations!! You unlocked a new plant pot!")
     }
