@@ -18,7 +18,7 @@
     },
 
     {
-        "Goal": "Tody up room"
+        "Goal": "Tidy up room"
     },
 
     {
@@ -83,6 +83,9 @@
 
     {
         "Goal": "Set a daily spending goal"
+    },
+    {
+        "Goal": "Make a meal from scratch"
     }
 ]
 }
