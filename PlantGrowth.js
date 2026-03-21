@@ -2,13 +2,13 @@ import { Plant } from './Classes.js';
 import goalData from './PlantGoals.json' assert {type: 'json'}
 
 
-function makePlant(goalName, goalsList) {
+function makePlant(goalId, goalsList) {
     const goalsArray = goalsList["Plant Goals"];
-    const goal = goalsArray.find(g => g.goalID === goalId);
+    const goal = goalsArray.find(g => g.GoalID === goalId);
     if (goal) {
         return new Plant(goal);
     } else {
-        console.error('Goal not found for: ', goalName);
+        console.error('Goal not found for: ', goalId);
         return null;
     }
 }
