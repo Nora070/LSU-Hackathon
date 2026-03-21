@@ -12,6 +12,7 @@ export function MakePlant(goalId, goalsList) {
     }
 }
 
+/* export to make functions public - usable*/
 export function GrowPlant() {
     plant.progress +=1;
     console.log("Current Growth Amount: " + plant.progress)
