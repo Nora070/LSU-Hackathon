@@ -13,15 +13,11 @@ function downloadCSV(content, filename) {
 }
 
 function startNewPlayer() {
-    let playerCount = parseInt(localStorage.getItem('playerCount') || '0');
-    playerCount += 1;
-    localStorage.setItem('playerCount', playerCount.toString());
-    let playerID = 'player' + playerCount.toString().padStart(2, '0');
-    // Create CSV content with player ID
-    let csvContent = 'Player ID\n' + playerID + '\n';
-    downloadCSV(csvContent, playerID + '.csv');
-    // Then redirect to Home.html
-    window.location.href = 'Home.html';
+    const name = prompt('Enter a name for your save file (e.g. "sarah"):');
+    if (!name) return; // user hit cancel
+    const filename = name.trim().replace(/\s+/g, '_') + '.csv';
+    const csvContent = 'goal,plant_type,stage\n';
+    downloadCSV(csvContent, filename);
 }
 
 
@@ -103,8 +99,8 @@ const TOTAL_STAGES = 4;
     // Save to localStorage so game.html can read it
     localStorage.setItem('playerGoals', JSON.stringify(goals));
     localStorage.setItem('playerFilename', filename);
-    document.getElementById('preview').style.display = 'block';
-  }
+    window.location.href = 'game.html';
+    }
 
   function enterGarden() { window.location.href = 'game.html'; }
 
