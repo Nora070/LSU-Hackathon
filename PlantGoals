@@ -1,87 +1,103 @@
 {
     "Plant Goals":[
     {
+        "GoalID": "Sleep",
         "Goal": "Sleep for 7-9 hours to night"
     },
 
     {
+        "GoalID": "Read",
         "Goal": "Read for 30 minutes"
     },
 
     {
-        "Goal": "Sleep for 7-9 hours to night"
-    },
-
-    {
+        "GoalID": "Jog",
         "Goal": "Jog for an hour outside"
 
     },
 
     {
-        "Goal": "Tody up room"
+        "GoalID": "Tidy",
+        "Goal": "Tidy up room"
     },
 
     {
+        "GoalID": "Water",
         "Goal": "Drink a cup of water"
     },
 
     {
+        "GoalID": "Yoga",
         "Goal": "Do yoga for 10 minutes"
     },
 
     {
+        "GoalID": "Bed",
         "Goal": "Make your bed"
     },
 
     {
+        "GoalID": "Go Outside",
         "Goal": "Go outside and enjoy the view for 30 minutes"
     },
 
     {
+        "GoalID": "Eat Healthy",
         "Goal": "Eat a healthy home-cooked meal"
     },
 
     {
+        "GoalID": "Call Friends",
         "Goal": "Call your friends to catch up with them"
     },
 
     {
+        "GoalID": "Write",
         "Goal": "Write a journal entry for your day"
     },
 
     {
+        "GoalID": "Snack",
         "Goal": "Have a snack"
     },
 
     {
+        "GoalID": "Kind Act",
         "Goal": "Do an act of kindness for someone"
     },
 
     {
+        "GoalID": "Relax",
         "Goal": "Take some time to relax and refocus"
     },
 
     {
+        "GoalID": "Schedule",
         "Goal": "Write a schedule/To-Do list for tomorrow"
     },
 
     {
+        "GoalID": "Learn Hobby",
         "Goal": "Learn a new hobby"
     },
 
     {
+        "GoalID": "Cold Shower",
         "Goal": "Have a cold shower to boost yourself"
     },
 
     {
+        "GoalID": "Hobby",
         "Goal": "Spend some time doing your favorite hobby"
     },
 
     {
+        "GoalID": "Save Money",
         "Goal": "Save 20 dollars for rainy day funds"
     },
 
     {
+        "GoalID": "Saving Goal",
         "Goal": "Set a daily spending goal"
     }
 ]
