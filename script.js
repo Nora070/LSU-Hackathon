@@ -13,15 +13,11 @@ function downloadCSV(content, filename) {
 }
 
 function startNewPlayer() {
-    let playerCount = parseInt(localStorage.getItem('playerCount') || '0');
-    playerCount += 1;
-    localStorage.setItem('playerCount', playerCount.toString());
-    let playerID = 'player' + playerCount.toString().padStart(2, '0');
-    // Create CSV content with player ID
-    let csvContent = 'Player ID\n' + playerID + '\n';
-    downloadCSV(csvContent, playerID + '.csv');
-    // Then redirect to Home.html
-    window.location.href = 'Home.html';
+    const name = prompt('Enter a name for your save file (e.g. "sarah"):');
+    if (!name) return; // user hit cancel
+    const filename = name.trim().replace(/\s+/g, '_') + '.csv';
+    const csvContent = 'goal,plant_type,stage\n';
+    downloadCSV(csvContent, filename);
 }
 
 
@@ -36,7 +32,7 @@ const TOTAL_STAGES = 4;
     reader.onload = function(event) {
       try {
         const parsed = parseCSV(event.target.result);
-        if (parsed.length === 0) { showError('No goals found in this file.'); return; }
+        /*if (parsed.length === 0) { showError('No goals found in this file.'); return; }*/
         displayPreview(file.name, parsed);
       } catch (err) { showError('Could not read file: ' + err.message); }
     };
@@ -46,7 +42,7 @@ const TOTAL_STAGES = 4;
   // Player save file: Expects header: goal, plant_type, stage
   function parseCSV(text) {
     const lines = text.trim().split('\n').filter(l => l.trim() !== '');
-    if (lines.length < 2) throw new Error('File must have a header row and at least one goal.');
+    if (lines.length < 1) throw new Error('File must have a header row.');
 
     const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
     const goalIdx  = headers.indexOf('goal');
@@ -103,8 +99,8 @@ const TOTAL_STAGES = 4;
     // Save to localStorage so game.html can read it
     localStorage.setItem('playerGoals', JSON.stringify(goals));
     localStorage.setItem('playerFilename', filename);
-    document.getElementById('preview').style.display = 'block';
-  }
+    window.location.href = 'game.html';
+    }
 
   function enterGarden() { window.location.href = 'game.html'; }
 
@@ -121,12 +117,3 @@ const TOTAL_STAGES = 4;
   }
   function hideError() { document.getElementById('error').style.display = 'none'; }
   function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-
-  // Auto-reload returning player's last profile
-  window.addEventListener('load', () => {
-    const saved = localStorage.getItem('playerGoals');
-    const savedFile = localStorage.getItem('playerFilename');
-    if (saved && savedFile) {
-      try { displayPreview(savedFile, JSON.parse(saved)); } catch(e) {}
-    }
-  });

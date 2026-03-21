@@ -10,15 +10,23 @@ body {
     height: 1000px;
      }
 .titlePlacement {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px
-    height: 1500px;
+    margin-left: 425px;
+    margin-right: 50px;
+    margin-top: 375px;
+    margin-bottom: 0px;
+    padding: 5px;
+    width: 450px;
+    height: 5px;
+    color: darkgreen;
 }
 
 .howtoplayPlacement{
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px
-    height: 1100px;
+    margin-left: 450px;
+    margin-right: 50px;
+    margin-bottom: 5px;
+    margin-top: 90px;
+    padding: 0px;
+    width: 420px;
+    height: 5px;
+    color: darkgreen;
 }
