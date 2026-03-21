@@ -1,0 +1,11 @@
+body {
+    background-color: tan;
+    background-image: url('images/scroll.jpg');
+    background-repeat: no-repeat;
+    background-position: center; /* or center center */
+    background-size: 75% auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    height: 1000px;
+     }

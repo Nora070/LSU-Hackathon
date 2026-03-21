@@ -1,0 +1,88 @@
+body {
+  /* Matching shade of blue from image */
+  background-color: #77CAE3;
+  margin: 0;
+}
+
+.shelf-layer {
+  position: relative;
+  width: 70%; /* want two repeats */
+  height: auto; /* Full screen height */
+  margin: 0 auto;
+
+  aspect-ratio: 1742 / 1600;  
+  background-image: url('images/shelves.jpg');
+  background-size: 50% auto; /* 50% of the 70% container = 35% of total screen */
+  background-repeat: repeat-x;
+  background-position: left top;
+  /*border: 2px solid black;*/
+}
+
+.class {
+    text-decoration-color: black;
+}
+
+.goals { /* Allows multiple goals to be on the same line */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.goal {
+    position: absolute; /* This is the "pinning" magic */
+    width: 10%; /* Matches the width of one shelf tile */
+    text-align: center;
+    transform: translate(-50%, -50%); /* Keeps the text perfectly centered on its coordinates */
+}
+
+/* 1. Add the pot image to EVERY goal box automatically */
+.goal::after {
+    content: url('images/starterPot.png'); /* only have to change image path once */
+    position: absolute;
+    top: 52px; /* Moves it below the button */
+    
+    /* Scale image, origonally 200x200 */
+    transform: scale(0.3); 
+    transform-origin: top; 
+}
+
+/* 2. Position for Goals 1, 3, 5 (The left side) */
+.left-shelf::after {
+    left: 80%; /* Moves pot to the right */
+}
+
+/* 3. Position for Goals 2, 4, 6 (The right side) */
+.right-shelf::after {
+    right: 80%; /* Moves pot to the left */
+}
+
+
+#Goal1 {
+    top: 18%;
+    left: 8%;
+}
+
+#Goal2 {
+    top: 18%;
+    left: 92%;
+}
+
+#Goal3 {
+    top: 42%;
+    left: 8%;
+}
+
+#Goal4 {
+    top: 42%;
+    left: 92%;
+}
+
+#Goal5 {
+    top: 66%;
+    left: 8%;
+}
+
+#Goal6 {
+    top: 66%;
+    left: 92%;
+}
