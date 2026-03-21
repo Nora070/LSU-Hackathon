@@ -1,19 +1,39 @@
-import goalData from '.\PlantGoals.json' assert {type: 'json'}
-let plantProgress = 0;
+import { Plant } from './Classes.js';
 
-function DisplayGoals() {
-console.log(goalData);
-console.log(goalData[0].Goal);
-}
 
-function GrowPlant() {
-    let playerResponse = true;
-    if (playerResponse == true) {
-        plantProgress +=1;
+export function MakePlant(goalId, goalsList) {
+    const goalsArray = goalsList["Plant Goals"];
+    const goal = goalsArray.find(g => g.GoalID === goalId);
+    if (goal) {
+        return new Plant(goal);
+    } else {
+        console.error('Goal not found for: ', goalId);
+        return null;
     }
-    console.log("Current Growth Amount: " + plantProgress)
 }
 
-function GrowthStage () {
-    if ()
+/* export to make functions public - usable*/
+export function GrowPlant() {
+    plant.progress +=1;
+    console.log("Current Growth Amount: " + plant.progress)
+
+    if (plant.progress >= 12) {
+        plant.plantStage = 3;
+        console.log("Your Plant is fully grown!");
+    }
+    else if (plant.progress >= 8) {
+        plant.plantStage = 2;
+        console.log("Your Plant has reached its third growth stage.");
+    } 
+    else if (plant.progress >= 4) {
+        plant.plantStage = 1;
+        console.log("Your Plant has reached its second growth stage.");
+    } 
+    else {
+        console.log("Your Plant is at its first growth stage.");
+    }
+
+    if (plant.plantStage === 3) {
+        console.log("Congratulations!! You unlocked a new plant pot!")
+    }
 }

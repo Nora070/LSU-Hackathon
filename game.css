@@ -1,0 +1,78 @@
+body {
+  /* Matching shade of blue from image */
+  background-color: #77CAE3;
+  margin: 0;
+}
+
+.shelf-layer {
+  position: relative;
+  width: 70%; /* want two repeats */
+  height: auto; /* Full screen height */
+  margin: 0 auto;
+
+  aspect-ratio: 1742 / 1600;  
+  background-image: url('images/shelves.jpg');
+  background-size: 50% auto; /* 50% of the 70% container = 35% of total screen */
+  background-repeat: repeat-x;
+  background-position: left top;
+  /*border: 2px solid black;*/
+}
+
+.class {
+    text-decoration-color: black;
+}
+
+.goals { /* Allows multiple goals to be on the same line */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.goal {
+    position: absolute;
+    width: 25%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;  /* side by side instead of stacked */
+    align-items: center;
+    gap: 6px;
+}
+
+.goal img {
+    width: 50%;
+    height: auto;
+}
+
+
+#Goal1 {
+    top: 32%;
+    left: 28%;
+}
+
+#Goal2 {
+    top: 32%;
+    left: 80%;
+}
+
+#Goal3 {
+    top: 56%;
+    left: 28%;
+}
+
+#Goal4 {
+    top: 56%;
+    left: 80%;
+}
+
+#Goal5 {
+    top: 81%;
+    left: 28%;
+}
+
+#Goal6 {
+    top: 81%;
+    left: 80%;
+}
