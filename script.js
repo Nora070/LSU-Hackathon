@@ -32,7 +32,7 @@ const TOTAL_STAGES = 4;
     reader.onload = function(event) {
       try {
         const parsed = parseCSV(event.target.result);
-        if (parsed.length === 0) { showError('No goals found in this file.'); return; }
+        /*if (parsed.length === 0) { showError('No goals found in this file.'); return; }*/
         displayPreview(file.name, parsed);
       } catch (err) { showError('Could not read file: ' + err.message); }
     };
@@ -42,7 +42,7 @@ const TOTAL_STAGES = 4;
   // Player save file: Expects header: goal, plant_type, stage
   function parseCSV(text) {
     const lines = text.trim().split('\n').filter(l => l.trim() !== '');
-    if (lines.length < 2) throw new Error('File must have a header row and at least one goal.');
+    if (lines.length < 1) throw new Error('File must have a header row.');
 
     const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
     const goalIdx  = headers.indexOf('goal');
@@ -117,12 +117,3 @@ const TOTAL_STAGES = 4;
   }
   function hideError() { document.getElementById('error').style.display = 'none'; }
   function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-
-  // Auto-reload returning player's last profile
-  window.addEventListener('load', () => {
-    const saved = localStorage.getItem('playerGoals');
-    const savedFile = localStorage.getItem('playerFilename');
-    if (saved && savedFile) {
-      try { displayPreview(savedFile, JSON.parse(saved)); } catch(e) {}
-    }
-  });
