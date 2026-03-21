@@ -1,0 +1,108 @@
+{
+    "Plant Goals":[
+    {
+        "Goal": "Sleep for 7-9 hours to night",
+        "Plant Growth Amount": 5
+    },
+
+    {
+        "Goal": "Read for 30 minutes",
+        "Plant Growth Amount": 3
+    },
+
+    {
+        "Goal": "Sleep for 7-9 hours to night",
+        "Plant Growth Amount": 5
+    },
+
+    {
+        "Goal": "Jog for an hour outside",
+        "Plant Growth Amount": 4
+    },
+
+    {
+        "Goal": "Tody up room",
+        "Plant Growth Amount": 5
+    },
+
+    {
+        "Goal": "Drink a cup of water",
+        "Plant Growth Amount": 2
+    },
+
+    {
+        "Goal": "Do yoge for 10 minutes",
+        "Plant Growth Amount": 2
+    },
+
+    {
+        "Goal": "Make your bed",
+        "Plant Growth Amount": 2 
+    },
+
+    {
+        "Goal": "Go outside and enjoy the view for 30 minutes",
+        "Plant Growth Amount": 2
+    },
+
+    {
+        "Goal": "Eat a healthy home-cooked meal",
+        "Plant Growth Amount": 5
+    },
+
+    {
+        "Goal": "Call your friends to catch up with them",
+        "Plant Growth Amount": 3
+    },
+
+    {
+        "Goal": "Write a journal entry for your day",
+        "Plant Growth Amount": 3
+    },
+
+    {
+        "Goal": "Have a snack",
+        "Plant Growth Amount": 2 
+    },
+
+    {
+        "Goal": "Do an act of kindness for someone",
+        "Plant Growth Amount": 4
+    },
+
+    {
+        "Goal": "Take some time to relax and refocus",
+        "Plant Growth Amount": 3
+    },
+
+    {
+        "Goal": "Write a schedule/To-Do list for tomorrow",
+        "Plant Growth Amount": 2
+    },
+
+    {
+        "Goal": "Learn a new hobby",
+        "Plant Growth Amount": 3
+    },
+
+    {
+        "Goal": "Have a cold shower to boost yourself",
+        "Plant Growth Amount": 4
+    },
+
+    {
+        "Goal": "Spend some time doing your favorite hobby",
+        "Plant Growth Amount": 2
+    },
+
+    {
+        "Goal": "Save 20 dollars for rainy day funds",
+        "Plant Growth Amount": 4
+    },
+
+    {
+        "Goal": "Set a daily spending goal",
+        "Plant Growth Amount": 3
+    }
+]
+}
