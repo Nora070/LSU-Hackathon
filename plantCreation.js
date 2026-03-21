@@ -3,6 +3,7 @@ import { MakePlant, GrowPlant } from './PlantGrowth.js';
 
 const goalDropdown = document.getElementById('GoalSelection');
 const plantContainer = document.getElementById('plantContainer');
+const createPlant = document.getElementById("createPlant")
 
 let dropdown = document.getElementById('GoalSelection');
 dropdown.length = 0;
@@ -37,4 +38,22 @@ fetch('./PlantGoals.json')
   )  
   .catch(function(err) {  
     console.error('Fetch Error -', err);  
+  });
+
+  createPlant.addEventListener('click', function() {
+    const selectedGoal = dropdown.value;
+    if (!selectedGoal){
+        alert("Please select a goal first.")
+        return;
+    }
+    
+    fetch('./PlantGoals.json')  
+        .then(function(response) {
+            return response.json
+        })
+        .then(function(data) {
+            console.log(data);
+        })
+        
+
   });
