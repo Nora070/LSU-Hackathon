@@ -41,19 +41,12 @@ fetch('./PlantGoals.json')
   });
 
   createPlant.addEventListener('click', function() {
-    const selectedGoal = dropdown.value;
-    if (!selectedGoal){
+    //const selectedGoal = dropdown.value;
+    /*if (!selectedGoal){
         alert("Please select a goal first.")
         return;
     }
+        */
+       alert("You click the button!")
     
-    fetch('./PlantGoals.json')  
-        .then(function(response) {
-            return response.json
-        })
-        .then(function(data) {
-            console.log(data);
-        })
-        
-
   });
