@@ -18,26 +18,29 @@ function startNewPlayer() {
     const filename = name.trim().replace(/\s+/g, '_') + '.csv';
     const csvContent = 'goal,plant_type,stage\n';
     downloadCSV(csvContent, filename);
+    document.getElementById('newPlayerMsg').style.display = 'block';
 }
 
+function loadExistingPlayer() {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.click();
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        if (!file.name.endsWith('.csv')) { showError('Please select a .csv file.'); return; }
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            try {
+                const parsed = parseCSV(event.target.result);
+                displayPreview(file.name, parsed);
+            } catch (err) { showError('Could not read file: ' + err.message); }
+        };
+        reader.readAsText(file);
+    });
+}
 
 const TOTAL_STAGES = 4;
-
-  document.getElementById('fileInput').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    if (!file.name.endsWith('.csv')) { showError('Please select a .csv file.'); return; }
-
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      try {
-        const parsed = parseCSV(event.target.result);
-        /*if (parsed.length === 0) { showError('No goals found in this file.'); return; }*/
-        displayPreview(file.name, parsed);
-      } catch (err) { showError('Could not read file: ' + err.message); }
-    };
-    reader.readAsText(file);
-  });
 
   // Player save file: Expects header: goal, plant_type, stage
   function parseCSV(text) {
@@ -117,3 +120,22 @@ const TOTAL_STAGES = 4;
   }
   function hideError() { document.getElementById('error').style.display = 'none'; }
   function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function openGoal(index) {
+    localStorage.setItem('activeGoal', index);
+    window.location.href = 'plant.html';
+    console.log('Opening goal index: ' + index);
+}
+/* One landing page, but remember which goal we're looking at*/
+
+
+
+
+function openModal() {
+    const modal = document.getElementById('newPlantModal');
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('newPlantModal').style.display = 'none';
+}
