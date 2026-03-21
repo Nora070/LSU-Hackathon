@@ -1,9 +1,11 @@
 import { Plant } from './Classes.js';
 import { MakePlant, GrowPlant } from './PlantGrowth.js';
-import goalData from './PlantGoals.json' assert {type: 'json'}
 
-const goalDropdown = document.getElementById('goalSelection');
+const goalDropdown = document.getElementById('GoalSelection');
 const plantContainer = document.getElementById('plantContainer');
+
+let dropdown = document.getElementById('GoalSelection');
+dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
 defaultOption.text = 'Choose Goal';
@@ -22,7 +24,9 @@ fetch('./PlantGoals.json')
       response.json().then(function(data) {  
         let option;
     
+        console.log(data);
     	for (let i = 0; i < data["Plant Goals"].length; i++) {
+          console.log(data["Plant Goals"][i].Goal);
           option = document.createElement('option');
       	  option.text = data["Plant Goals"][i].Goal;
       	  option.value = data["Plant Goals"][i].GoalID;

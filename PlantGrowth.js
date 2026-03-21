@@ -1,8 +1,7 @@
 import { Plant } from './Classes.js';
-import goalData from './PlantGoals.json' assert {type: 'json'}
 
 
-function MakePlant(goalId, goalsList) {
+export function MakePlant(goalId, goalsList) {
     const goalsArray = goalsList["Plant Goals"];
     const goal = goalsArray.find(g => g.GoalID === goalId);
     if (goal) {
@@ -13,7 +12,7 @@ function MakePlant(goalId, goalsList) {
     }
 }
 
-function GrowPlant() {
+export function GrowPlant() {
     plant.progress +=1;
     console.log("Current Growth Amount: " + plant.progress)
 
