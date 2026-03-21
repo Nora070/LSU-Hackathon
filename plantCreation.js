@@ -47,6 +47,6 @@ fetch('./PlantGoals.json')
         return;
     }
         */
-       alert("You click the button!")
+       alert("You created a new plant!")
        MakePlant(selectedGoal);
   });
