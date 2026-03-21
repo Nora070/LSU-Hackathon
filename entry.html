@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Self Growth</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="entry.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Welcome to Self Growth!</h1>
+
+    <div class="actions">
+        
+            <input type="file" id="fileInput" accept=".csv" style="display:none" />
+
+            <button type="button" onclick="startNewPlayer()">Start new player</button>
+            <!--Create a new csv file for the player - automatically iterate the title based on number of files - ie player03 -->
+            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                Load Existing Player Profile
+            </button>
+            
+            <button type="button" onclick="window.location.href='Instructions.html'">Instructions</button>
+
+    </div>
+
+
+
+
+<script src="script.js" defer></script>
+
+<footer>
+    <p>Produced by: Loyola WiCys + Aminat
+        LSU Hackathon, March 2026
+    </p>
+</footer>
+
+</body>
+
+
+
+</html>
