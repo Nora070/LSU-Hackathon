@@ -1,11 +1,13 @@
 body {
-    background-color: #f0f0f0;
-    background-image: url('path/to/your/image.png');
+    background-color: #656565;
+    background-image: url('images/greenhouse.jpg');
     background-repeat: no-repeat;
-    background-position: center; /* or center center */
+    background-position: center center;
+    background-size: 75% auto;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
+    height: 1000px;
      }
 
 
