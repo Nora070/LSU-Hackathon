@@ -99,6 +99,9 @@
     {
         "GoalID": "Saving Goal",
         "Goal": "Set a daily spending goal"
+    },
+    {
+        "Goal": "Make a meal from scratch"
     }
 ]
 }
