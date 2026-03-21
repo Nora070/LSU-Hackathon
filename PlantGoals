@@ -1,108 +1,88 @@
 {
     "Plant Goals":[
     {
-        "Goal": "Sleep for 7-9 hours to night",
-        "Plant Growth Amount": 5
+        "Goal": "Sleep for 7-9 hours to night"
     },
 
     {
-        "Goal": "Read for 30 minutes",
-        "Plant Growth Amount": 3
+        "Goal": "Read for 30 minutes"
     },
 
     {
-        "Goal": "Sleep for 7-9 hours to night",
-        "Plant Growth Amount": 5
+        "Goal": "Sleep for 7-9 hours to night"
     },
 
     {
-        "Goal": "Jog for an hour outside",
-        "Plant Growth Amount": 4
+        "Goal": "Jog for an hour outside"
+
     },
 
     {
-        "Goal": "Tody up room",
-        "Plant Growth Amount": 5
+        "Goal": "Tody up room"
     },
 
     {
-        "Goal": "Drink a cup of water",
-        "Plant Growth Amount": 2
+        "Goal": "Drink a cup of water"
     },
 
     {
-        "Goal": "Do yoge for 10 minutes",
-        "Plant Growth Amount": 2
+        "Goal": "Do yoga for 10 minutes"
     },
 
     {
-        "Goal": "Make your bed",
-        "Plant Growth Amount": 2 
+        "Goal": "Make your bed"
     },
 
     {
-        "Goal": "Go outside and enjoy the view for 30 minutes",
-        "Plant Growth Amount": 2
+        "Goal": "Go outside and enjoy the view for 30 minutes"
     },
 
     {
-        "Goal": "Eat a healthy home-cooked meal",
-        "Plant Growth Amount": 5
+        "Goal": "Eat a healthy home-cooked meal"
     },
 
     {
-        "Goal": "Call your friends to catch up with them",
-        "Plant Growth Amount": 3
+        "Goal": "Call your friends to catch up with them"
     },
 
     {
-        "Goal": "Write a journal entry for your day",
-        "Plant Growth Amount": 3
+        "Goal": "Write a journal entry for your day"
     },
 
     {
-        "Goal": "Have a snack",
-        "Plant Growth Amount": 2 
+        "Goal": "Have a snack"
     },
 
     {
-        "Goal": "Do an act of kindness for someone",
-        "Plant Growth Amount": 4
+        "Goal": "Do an act of kindness for someone"
     },
 
     {
-        "Goal": "Take some time to relax and refocus",
-        "Plant Growth Amount": 3
+        "Goal": "Take some time to relax and refocus"
     },
 
     {
-        "Goal": "Write a schedule/To-Do list for tomorrow",
-        "Plant Growth Amount": 2
+        "Goal": "Write a schedule/To-Do list for tomorrow"
     },
 
     {
-        "Goal": "Learn a new hobby",
-        "Plant Growth Amount": 3
+        "Goal": "Learn a new hobby"
     },
 
     {
-        "Goal": "Have a cold shower to boost yourself",
-        "Plant Growth Amount": 4
+        "Goal": "Have a cold shower to boost yourself"
     },
 
     {
-        "Goal": "Spend some time doing your favorite hobby",
-        "Plant Growth Amount": 2
+        "Goal": "Spend some time doing your favorite hobby"
     },
 
     {
-        "Goal": "Save 20 dollars for rainy day funds",
-        "Plant Growth Amount": 4
+        "Goal": "Save 20 dollars for rainy day funds"
     },
 
     {
-        "Goal": "Set a daily spending goal",
-        "Plant Growth Amount": 3
+        "Goal": "Set a daily spending goal"
     }
 ]
 }
