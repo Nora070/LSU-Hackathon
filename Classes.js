@@ -1,7 +1,10 @@
+
+
 export class Plant {
-    constructor() {
+  /*  constructor() {
         currentGoalIndex++;
     }
+        */
     setGoal (goal) {
         // Plant class initializes with goal data from JSON file
         this.goalId = goal.GoalID;
