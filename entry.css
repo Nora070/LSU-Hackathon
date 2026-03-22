@@ -1,55 +1,106 @@
-body {
-    background-color: #656565;
-    background-image: url('images/greenhouse.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 75% auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    height: 1000px;
-     }
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #a8d8f0 0%,
+        #ffd4e8 45%,
+        #ffe4b5 60%,
+        #ff8c42 99%,
+        #ff8c42 100%
+    );
+    font-family: serif;
+}
 
-
+/* title top center */
 h1 {
-    font-family: Serif;
-    color: black;
-    text-align: center;
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    color: #2d4a2d;
+    margin: 0;
+    z-index: 10;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
 }
 
-h2 {
-    display: center;
-    font-size: 18px;
+/* greenhouse image centered */
+.greenhouse {
+    position: fixed;
+    bottom: 85px;           /* ← sits just above grass */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;           /* ← adjust size */
+    height: auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    z-index: 1;
 }
 
+/* buttons centered on screen */
 .actions {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
-    margin-top: 30px;
 }
 
-.actions button {
-    padding: 12px 24px;
-    font-size: 1rem;
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 10px 30px;
+    font-size: 0.95rem;
+    font-family: serif;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     background-color: #4a7c59;
     color: white;
+    width: 220px;
 }
 
-.actions button:hover {
+.buttons button:hover {
     background-color: #3b6347;
 }
 
+/* success message */
+#newPlayerMsg {
+    font-size: 0.85rem;
+    color: #2d4a2d;
+    background: rgba(255,255,255,0.6);
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-align: center;
+}
 
-img {
+#error {
+    color: red;
+    font-size: 0.8rem;
+    text-align: center;
+}
 
-    height: 300px;
-    width: 350px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
+footer {
+    position: fixed;
+    bottom: 95px;
+    left: 50%;                          /* ← center trick */
+    transform: translateX(-50%);        /* ← combined with left:50% centers it */
+    font-size: 0.7rem;
+    color: #2d4a2d;
+    z-index: 10;
+    white-space: nowrap;                /* ← prevents text wrapping */
 }
