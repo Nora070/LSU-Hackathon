@@ -36,7 +36,12 @@
 
 
 
-<script src="script.js" defer></script>
+<script defer type="module">
+    import { startNewPlayer, loadExistingPlayer } from "./entry.js";
+
+    window.startNewPlayer = startNewPlayer;
+    window.loadExistingPlayer = loadExistingPlayer;
+</script>
 
 <footer>
     <p>Produced by: Loyola WiCys + Aminat

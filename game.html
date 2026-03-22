@@ -62,7 +62,13 @@
         <a href="entry.html"> <button type="button">Return</button></a>
     </div>
     
-    <script src="script.js" defer></script>
+    <script type="module" defer>
+        import { closeModal, openGoal, openModal } from "./game.js";
+
+        window.closeModal = closeModal;
+        window.openGoal = openGoal;
+        window.openModal = openModal;
+    </script>
     <script type="module" src="plantCreation.js"></script>
 
 </body>
