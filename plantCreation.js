@@ -42,13 +42,33 @@ fetch('./PlantGoals.json')
 
   createPlant.addEventListener('click', function() {
     const selectedGoal = dropdown.value;
-    /*if (!selectedGoal){
-        alert("Please select a goal first.")
-        return;
-    }
-        */
-       alert("You created a new plant!")
+    if (selectedGoal === 'Choose Goal') { alert('Please select a goal first.'); return; }
 
-      const plant = new Plant();
-      plant.setGoal(selectedGoal)
-  });
+    // Load existing saved goals or start fresh
+    let savedGoals = JSON.parse(localStorage.getItem('playerGoals') || '[]');
+
+    // Find first empty slot (under 6 goals)
+    const emptyIndex = savedGoals.findIndex(g => !g.goalName);
+    if (emptyIndex === -1) { alert('All 6 goal slots are full!'); return; }
+
+    savedGoals[emptyIndex] = {
+        goalName: dropdown.options[dropdown.selectedIndex].text,
+        plantType: 'fern',
+        plantStage: 0
+    };
+
+    // Add new plant to the array
+    savedGoals.push({
+        goalName: dropdown.options[dropdown.selectedIndex].text,
+        plantType: 'fern',
+        plantStage: 0
+    });
+
+    localStorage.setItem('playerGoals', JSON.stringify(savedGoals));
+    closeModal();
+    loadGoalsOntoShelves(); // refresh the shelf display
+});
+
+function closeModal() {
+    document.getElementById('newPlantModal').style.display = 'none';
+}
