@@ -1,59 +1,102 @@
-html {
-    overflow: hidden;
-}
-
-body {
-  background-color: #77CAE3;
+html, body {
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #a8d8f0 0%,      /* ← soft baby blue sky at top */
+    #ffd4e8 45%,     /* ← blends into soft pink */
+    #ffe4b5 60%,     /* ← warm peach/orange sunset */     /* ← golden yellow horizon */ 
+    #ff8c42 80%,    /* ← soft warm yellow */
+    #ff8c42  100%     /* ← soft sage green ground */
+  );
+}
+/* Grass */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;        /* ← height of grass strip, increase for taller grass */
+    background: linear-gradient(
+        to bottom,
+        #5a9e4f 0%,      /* ← light green at top of grass */
+        #3d7a35 60%,     /* ← mid green */
+        #2d5a1b 100%     /* ← darker green at bottom */
+    );
+    z-index: 0;          /* ← sits behind shelf */
 }
 
 h2 {
-    text-align: center;
+    position: fixed;
+    top: 10px;
+    left: 15px;
     font-family: serif;
+    font-size: 0.8rem;
+    color: #2d4a2d;
+    margin: 0;
+    z-index: 10;
 }
 
-.page-wrapper {
-    width: 1280px;       /* fixed page width */
-    height: 800px;       /* fixed page height */
-    overflow: hidden;    /* nothing spills out */
-    margin: 0 auto;
-    transform-origin: top left;
-    position: relative;
+#addPlantBtn {
+    position: fixed; 
+    top: 10px;
+    right: 15px;
+    padding: 10px 20px;
+    font-size: 10px;
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#addPlantBtn:hover {
+    background-color: #3b6347;
+}
+
+.buttons {
+    position: fixed;
+    top: 60px;
+    right: 15px;
+    z-index: 10;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 8px;
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #3b6347;
 }
 
 .shelf-layer {
-  position: relative;
-  width: 100%;
-  /*width: 80%; /* want two repeats */
-  /*height: auto; /* Full screen height */
-  margin: 0 auto;
-  margin-top: 20px;
-  /*background-size: 50% auto; /* 50% of the 70% container = 35% of total screen */
-  /*background-repeat: repeat-x;
-  background-position: left top;*/
-  /*border: 2px solid black;*/
+  position: fixed;
+  width: 700px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  z-index: 2;
 }
+
 .shelf-img {
-    width: 110%;
+    width: 100%;
     height: auto;
     display: block;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    /*
-    aspect-ratio: 1742 / 1600;  
-    background-image: url('images/plants/shelf.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    aspect-ratio: 3030 / 1590;
-    */
+}
 
-}
-/*
-.class {
-    text-decoration-color: black;
-}
-*/
 .goals { /* Allows multiple goals to be on the same line */
     position: absolute;
     top: 0;
@@ -76,15 +119,16 @@ h2 {
 }
 
 .goal img {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
+    object-position: bottom;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
 
 .goal span {
-    font-size: 0.6rem;
+    font-size: 0.4rem;
     color: black;
     /*color: #2d4a2d;*/
     text-align: center;
@@ -92,19 +136,20 @@ h2 {
     max-width: 80px;
     word-break: break-word;
     font-weight: bold;
+    margin-bottom: -2px;
 
 }
 /* Row 1 */
-#Goal1 { top: 20%; left: 39%; }
-#Goal2 { top: 20%; left: 53%; }
+#Goal1 { top: 20%; left: 35%; }
+#Goal2 { top: 20%; left: 48.5%; }
 
 /* Row 2 */
-#Goal3 { top: 49%; left: 39%; }
-#Goal4 { top: 49%; left: 53%; }
+#Goal3 { top: 49.5%; left: 35%; }
+#Goal4 { top: 49.5%; left: 48.5%; }
 
 /* Row 3 */
-#Goal5 { top: 78%; left: 39%; }
-#Goal6 { top: 78%; left: 53%; }
+#Goal5 { top: 78%; left: 35%; }
+#Goal6 { top: 78%; left: 48.5%; }
 /*
 #Goal1 {
     top: 32%;
@@ -136,29 +181,64 @@ h2 {
     left: 80%;
 }
 */
-#addPlantBtn {
-    position: fixed; /* was absllute */
-    top: 10px;
-    right: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4a7c59;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+
+
+@keyframes driftCloud {
+    from { left: -200px; }   /* ← starts off screen left */
+    to   { left: 110%; }     /* ← exits off screen right */
 }
 
-.buttons {
-    text-align: center;
-    margin-top: 10px;
+/* ADDED: base cloud style */
+.cloud {
+    position: fixed;
+    background-image: url('images/plants/cloud.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    opacity: 0.50;
+    animation: driftCloud linear infinite;
+    z-index: 0;              /* ← behind shelf */
 }
 
-.buttons button {
-    padding: 10px 20px;
-    background-color: #4a7c59;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* ADDED: 3 clouds at different sizes, speeds and heights */
+.cloud-1 {
+    width: 180px;
+    height: 90px;
+    top: 5%;                 /* ← high in sky */
+    animation-duration: 70s; /* ← slow drift */
+    animation-delay: 0s;
+}
+
+.cloud-2 {
+    width: 120px;
+    height: 60px;
+    top: 12%;
+    animation-duration: 80s;
+    animation-delay: -20s;
+}
+
+.cloud-3 {
+    width: 150px;
+    height: 75px;
+    top: 8%;
+    animation-duration: 50s;
+    animation-delay: -35s;
+}
+
+.cloud-4 {
+    width: 120px;
+    height: 60px;
+    top: 30%;
+    animation-duration: 40s;
+    animation-delay: 0s;
+}
+
+.cloud-5 {
+    width: 200px;
+    height: 100px;
+    top: 20%;
+    animation-duration: 60s;
+    animation-delay: 0s;
 }

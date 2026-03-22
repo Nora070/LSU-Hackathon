@@ -7,89 +7,81 @@
     <link href="game.css" rel="stylesheet">
 </head>
 <body>
-    <div class="page-wrapper">
-        <h2>Select a goal to log progress</h2>
+    <h2>Select a goal to log progress</h2>
 
-        <div class="shelf-layer">
-            <img src="images/plants/shelf.png" class="shelf-img" alt="shelf" />
-            <div class="goals">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div class="cloud cloud-5"></div>
+
+    <div class="shelf-layer">
+        <img src="images/plants/shelf.png" class="shelf-img" alt="shelf" />
+        <div class="goals">
             <!-- Add the shelf side class directly to the button -->
             
-                <button id="Goal1" class="goal" onclick="openGoal(0)">
-                    <img src="images/plants/test.png" alt="pot" />
-                    <span>Goal 1</span>
-                </button>
+            <button id="Goal1" class="goal" onclick="openGoal(0)">
+                <img src="images/plants/test.png" alt="pot" />
+                <span>Goal 1</span>
+            </button>
 
-                <button id="Goal2" class="goal" onclick="openGoal(1)">
-                    <img src="images/plants/test.png" alt="pot" />
-                    <span>Goal 2</span>
-                </button>
+            <button id="Goal2" class="goal" onclick="openGoal(1)">
+                <img src="images/plants/test.png" alt="pot" />
+                <span>Goal 2</span>
+            </button>
 
-                <button id="Goal3" class="goal" onclick="openGoal(2)">
-                    <img src="images/plants/test.png" alt="pot" />
-                    <span>Goal 3</span>
-                </button>
-                <button id="Goal4" class="goal" onclick="openGoal(3)">
-                    <img src="images/plants/test.png" alt="pot" />
-                    <span>Goal 4</span>
-                </button>
+            <button id="Goal3" class="goal" onclick="openGoal(2)">
+                <img src="images/plants/test.png" alt="pot" />
+                <span>Goal 3</span>
+            </button>
+               
+            <button id="Goal4" class="goal" onclick="openGoal(3)">
+                <img src="images/plants/test.png" alt="pot" />
+                <span>Goal 4</span>
+            </button>
 
-                <button id="Goal5" class="goal" onclick="openGoal(4)">
-                    <img src="images/plants/test.png" alt="pot" />
-                    <span>Goal 5</span>
-                </button>
-                <button id="Goal6" class="goal" onclick="openGoal(5)">
-                    <img src="images/plants/test.png" alt="pot" />
-                    <span>Goal 6</span>
-                </button>
-            </div>
+            <button id="Goal5" class="goal" onclick="openGoal(4)">
+                <img src="images/plants/test.png" alt="pot" />
+                <span>Goal 5</span>
+            </button>
+
+            <button id="Goal6" class="goal" onclick="openGoal(5)">
+                <img src="images/plants/test.png" alt="pot" />
+                <span>Goal 6</span>
+            </button>
         </div>
-
+    </div>
 
     <!--button to trigger popup-->
-        <button id="addPlantBtn" onclick="openModal()">Add Plant</button>
+    <button id="addPlantBtn" onclick="openModal()">Add Plant</button>
     
     <!--pop up to make a new plant-->
-        <div id="newPlantModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;" onclick="closeModal(); ">
-            <div style="background:white; padding:30px; border-radius:8px; min-width:300px;" onclick="event.stopPropagation()">
-                <h1>Create a New Plant</h1>
-                <label for="GoalSelection">Choose a goal:</label>
-                <select id="GoalSelection"></select>
+    <div id="newPlantModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;" onclick="closeModal(); ">
+        <div style="background:white; padding:30px; border-radius:8px; min-width:300px;" onclick="event.stopPropagation()">
+            <h1>Create a New Plant</h1>
+            <label for="GoalSelection">Choose a goal:</label>
+            <select id="GoalSelection"></select>
 
-                <br><br>
+            <br><br>
 
-                <button id="createPlant">Create Plant</button>
-                <button onclick="closeModal()">Cancel</button>
-            </div>
+            <button id="createPlant">Create Plant</button>
+            <button onclick="closeModal()">Cancel</button>
         </div>
+    </div>
 
-        <div class="buttons">
-            <a href="entry.html"> <button type="button">Return</button></a>
-        </div>
+    <div class="buttons">
+        <a href="entry.html"> <button type="button">Return</button></a>
+    </div>
         
-        <script type="module" defer>
-            import { closeModal, openGoal, openModal, loadGoalsOntoShelves } from "./game.js";
+    <script type="module" defer>
+        import { closeModal, openGoal, openModal, loadGoalsOntoShelves } from "./game.js";
 
-            window.closeModal = closeModal;
-            window.openGoal = openGoal;
-            window.openModal = openModal;
-            window.loadGoalsOntoShelves = loadGoalsOntoShelves;
-        </script>
+        window.closeModal = closeModal;
+        window.openGoal = openGoal;
+        window.openModal = openModal;
+        window.loadGoalsOntoShelves = loadGoalsOntoShelves;
+    </script>
 
-        <script type="module" src="plantCreation.js"></script>
+    <script type="module" src="plantCreation.js"></script>
 
-        <!-- ADDED: scales the page-wrapper to fit screen, prevents zoom from changing sizes -->
-        <script>
-            function scaleToFit() {
-                const wrapper = document.querySelector('.page-wrapper');
-                const scaleX = window.innerWidth / 1280;
-                const scaleY = window.innerHeight / 800;
-                const scale = Math.min(scaleX, scaleY);
-                wrapper.style.transform = `scale(${scale})`;
-            }
-            scaleToFit();
-            window.addEventListener('resize', scaleToFit);
-        </script>
-
-    </body>
-    </html>
+</body>
