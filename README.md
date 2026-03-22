@@ -1,6 +1,6 @@
 # Self-Growth : Team 1212
 # Members 
 Nora
-Jenniffer
+Jennifer
 Aminat
 Sophina
