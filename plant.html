@@ -6,9 +6,15 @@
 </head>
 <body>
 
-
     <div class="buttons">
         <a href="game.html"> <button type="button">Return</button></a>
     </div>
 
+    <button type="button" onclick="printGoal()">Print Goal</button>">
+
+    
+    <script type="module" defer>
+        import { printGoal } from './script.js';
+        window.printGoal = printGoal;
+    </script>
 </body>

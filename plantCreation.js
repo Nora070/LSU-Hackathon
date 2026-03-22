@@ -48,5 +48,7 @@ fetch('./PlantGoals.json')
     }
         */
        alert("You created a new plant!")
-       MakePlant(selectedGoal);
+
+      const plant = new Plant();
+      plant.setGoal(selectedGoal)
   });
