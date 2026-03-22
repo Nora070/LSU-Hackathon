@@ -14,13 +14,15 @@ export function openGoal(index) {
  }
 
  export function loadGoalsOntoShelves() {
+    /*console.log(localStorage.getItem('playerGoals'));*/
     const savedGoals = JSON.parse(localStorage.getItem('playerGoals') || '[]');
     for (let i = 0; i < 6; i++) {
         const btn = document.getElementById('Goal' + (i + 1));
         const img = btn.querySelector('img');
         const label = btn.querySelector('span');
-        if (savedGoals[i]) {
-            img.src = `images/${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`;
+        if (savedGoals[i] && savedGoals[i].goalName) {
+            console.log(`images/${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`);
+            img.src = `images/Plant Stages${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`;
             label.textContent = savedGoals[i].goalName;
         } else {
             img.src = 'images/starterPot.png';

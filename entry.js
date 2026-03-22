@@ -1,6 +1,4 @@
-import { data } from "./Classes.js";
 
-let { playerGoals, currentGoalIndex } = data;
 
 function downloadCSV(content, filename) {
     const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
@@ -37,10 +35,8 @@ export function loadExistingPlayer() {
         const reader = new FileReader();
         reader.onload = function(event) {
             try {
-                const data = parseCSV(event.target.result);
-                for (const entry of data) playerGoals.push(entry);
-                currentGoalIndex = playerGoals.length
-                localStorage.setItem('playerGoals', JSON.stringify(playerGoals));
+               const parsed = parseCSV(event.target.result);
+                localStorage.setItem('playerGoals', JSON.stringify(parsed));
                 window.location.href = 'game.html';
             } catch (err) { console.error(err); showError('Could not read file: ' + err.message); }
         };

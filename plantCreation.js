@@ -4,6 +4,7 @@ import { MakePlant, GrowPlant } from './PlantGrowth.js';
 const goalDropdown = document.getElementById('GoalSelection');
 const plantContainer = document.getElementById('plantContainer');
 const createPlant = document.getElementById("createPlant")
+import { loadGoalsOntoShelves } from './game.js';
 
 let dropdown = document.getElementById('GoalSelection');
 dropdown.length = 0;
@@ -39,34 +40,33 @@ fetch('./PlantGoals.json')
   .catch(function(err) {  
     console.error('Fetch Error -', err);  
   });
+createPlant.addEventListener('click', function() {
+    const selectedValue = dropdown.value;
+    const selectedText = dropdown.options[dropdown.selectedIndex].text;
 
-  createPlant.addEventListener('click', function() {
-    const selectedGoal = dropdown.value;
-    if (selectedGoal === 'Choose Goal') { alert('Please select a goal first.'); return; }
+    if (selectedValue === 'Choose Goal') {
+        alert('Please select a goal first.');
+        return;
+    }
 
-    // Load existing saved goals or start fresh
     let savedGoals = JSON.parse(localStorage.getItem('playerGoals') || '[]');
+    savedGoals = savedGoals.filter(g => g.goalName); // strip empty objects
+    savedGoals = savedGoals.slice(0, 6);             // cap at 6
 
-    // Find first empty slot (under 6 goals)
-    const emptyIndex = savedGoals.findIndex(g => !g.goalName);
-    if (emptyIndex === -1) { alert('All 6 goal slots are full!'); return; }
+    if (savedGoals.length >= 6) {
+        alert('All 6 goal slots are full!');
+        return;
+    }
 
-    savedGoals[emptyIndex] = {
-        goalName: dropdown.options[dropdown.selectedIndex].text,
-        plantType: 'fern',
-        plantStage: 0
-    };
-
-    // Add new plant to the array
     savedGoals.push({
-        goalName: dropdown.options[dropdown.selectedIndex].text,
+        goalName: selectedText,
         plantType: 'fern',
         plantStage: 0
     });
 
     localStorage.setItem('playerGoals', JSON.stringify(savedGoals));
-    closeModal();
-    loadGoalsOntoShelves(); // refresh the shelf display
+    document.getElementById('newPlantModal').style.display = 'none';
+    loadGoalsOntoShelves();
 });
 
 function closeModal() {
