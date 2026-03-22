@@ -22,7 +22,8 @@ export function openGoal(index) {
         const label = btn.querySelector('span');
         if (savedGoals[i] && savedGoals[i].goalName) {
             console.log(`images/${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`);
-            img.src = `images/Plant Stages${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`;
+            //img.src = `images/Plans Stages${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`;
+            img.src = `images/Plants/${savedGoals[i].plantType}-${savedGoals[i].plantStage + 1}.png`; // sophina
             label.textContent = savedGoals[i].goalName;
         } else {
             img.src = 'images/starterPot.png';

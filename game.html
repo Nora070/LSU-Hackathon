@@ -14,30 +14,30 @@
         <div class="goals">
             <!-- Add the shelf side class directly to the button -->
             
-            <button id="Goal1" class="goal left-shelf" > <!--onclick="openGoal(0)"-->
+            <button id="Goal1" class="goal left-shelf" onclick="openGoal(0)">
                 <img src="images/starterPot.png" alt="pot" />
                 <span>Goal 1</span>
             </button>
 
-            <button id="Goal2" class="goal left-shelf" > <!--onclick="openGoal(1)"-->
+            <button id="Goal2" class="goal left-shelf" onclick="openGoal(1)">
                 <img src="images/starterPot.png" alt="pot" />
                 <span>Goal 2</span>
             </button>
 
-            <button id="Goal3" class="goal left-shelf" > <!--onclick="openGoal(2)"-->
+            <button id="Goal3" class="goal left-shelf" onclick="openGoal(2)"></button>
                 <img src="images/starterPot.png" alt="pot" />
                 <span>Goal 3</span>
             </button>
-            <button id="Goal4" class="goal right-shelf" > <!--onclick="openGoal(3)"-->
+            <button id="Goal4" class="goal right-shelf" onclick="openGoal(3)">
                 <img src="images/starterPot.png" alt="pot" />
                 <span>Goal 4</span>
             </button>
 
-            <button id="Goal5" class="goal left-shelf" > <!--onclick="openGoal(4)"-->
+            <button id="Goal5" class="goal left-shelf" onclick="openGoal(4)">
                 <img src="images/starterPot.png" alt="pot" />
                 <span>Goal 5</span>
             </button>
-            <button id="Goal6" class="goal right-shelf"> <!--openGoal(5)-->
+            <button id="Goal6" class="goal right-shelf" onclick="openGoal(5)">
                 <img src="images/starterPot.png" alt="pot" />
                 <span>Goal 6</span>
             </button>
@@ -49,7 +49,7 @@
     <button id="addPlantBtn" onclick="openModal()">Add Plant</button>
     
     <!--pop up to make a new plant-->
-    <div id="newPlantModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center; onclick:closeModal(); ">
+    <div id="newPlantModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;" onclick="closeModal(); ">
         <div style="background:white; padding:30px; border-radius:8px; min-width:300px;">
             <h1>Create a New Plant</h1>
             <label for="GoalSelection">Choose a goal:</label>

@@ -13,6 +13,9 @@ export class Plant {
         this.plantType = "fern"; // Default plant type, can be updated based on goal
         this.plantStage = 0;
     }
+    getPlantImage() {
+        return `images/plants/${this.plantType}_stage${this.plantStage + 1}.png`;
+    }
 }
 
 /*

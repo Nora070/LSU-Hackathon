@@ -1,0 +1,49 @@
+body {
+    background-color: #77CAE3;
+    font-family: serif;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #2d4a2d;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #3b3b3b;
+    font-size: 1rem;
+}
+
+.plant-img {
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+
+    /* 8-bit crisp rendering */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.actions button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4a7c59;
+    color: white;
+}
+
+.actions button:hover {
+    background-color: #3b6347;
+}

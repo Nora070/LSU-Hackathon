@@ -60,7 +60,7 @@ createPlant.addEventListener('click', function() {
 
     savedGoals.push({
         goalName: selectedText,
-        plantType: 'fern',
+        plantType: 'venus-fly-trap', //'fern' 'lily-of-the-valley'
         plantStage: 0
     });
 

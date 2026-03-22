@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Plant</title>
+    <link href="plant.css" rel="stylesheet">
+</head>
+<body>
+    <h1 id="goal-name">Loading...</h1>
+    <p id="progress-label">Progress: 0 check-ins</p>
+    <p id="checkin-status"></p>
+
+    <img id="plant-img" src="" alt="Your plant" class="plant-img" />
+
+    <div class="actions">
+        <button id="checkin-btn" onclick="checkIn()">✅ Log Today's Progress</button>
+        <button onclick="goBack()">← Back to Shelf</button>
+        <!-- ⚡ TEMPORARY TEST BUTTON — remove before submitting -->
+        <button onclick="fastForward()">⚡ Fast Forward (test)</button>
+    </div>
+
+    <script type="module">
+        import { GrowPlant } from './plantgrowth.js';
+
+        const activeIndex = parseInt(localStorage.getItem('activeGoal'));
+        let savedGoals = JSON.parse(localStorage.getItem('playerGoals') || '[]');
+        let goal = savedGoals[activeIndex];
+
+        const imgEl        = document.getElementById('plant-img');
+        const goalNameEl   = document.getElementById('goal-name');
+        const progressEl   = document.getElementById('progress-label');
+        const statusEl     = document.getElementById('checkin-status');
+        const checkinBtn   = document.getElementById('checkin-btn');
+
+        // --- Temporary: 2-stage mapping until all PNGs are ready ---
+        function getImagePath(plantType, stage) {
+            //const availableStages = 2;
+            //const clampedStage = Math.min(stage, availableStages - 1);
+            return `images/Plants/${plantType}-${stage + 1}.png`;
+        }
+
+        function render() {
+            goal = savedGoals[activeIndex];
+            goalNameEl.textContent  = goal.goalName;
+            progressEl.textContent  = `Progress: ${goal.progress || 0} check-ins`;
+            imgEl.src = getImagePath(goal.plantType, goal.plantStage);
+            imgEl.alt = `${goal.plantType} stage ${goal.plantStage + 1}`;
+
+            // Check if already checked in today
+            const today = new Date().toDateString();
+            if (goal.lastCheckIn === today) {
+                statusEl.textContent    = "✅ Already checked in today! Come back tomorrow.";
+                checkinBtn.disabled     = true;
+                checkinBtn.style.opacity = "0.5";
+            } else {
+                statusEl.textContent    = "";
+                checkinBtn.disabled     = false;
+                checkinBtn.style.opacity = "1";
+            }
+        }
+
+        function checkIn() {
+            const today = new Date().toDateString();
+            if (goal.lastCheckIn === today) return;
+
+            goal.progress = (goal.progress || 0) + 1;
+            goal.lastCheckIn = today;
+            GrowPlant(goal);
+
+            savedGoals[activeIndex] = goal;
+            localStorage.setItem('playerGoals', JSON.stringify(savedGoals));
+            render();
+        }
+
+        // ⚡ TEMPORARY — jumps progress by 3 to test stage changes
+        function fastForward() {
+            goal.progress = (goal.progress || 0) + 3;
+            GrowPlant(goal);
+            savedGoals[activeIndex] = goal;
+            localStorage.setItem('playerGoals', JSON.stringify(savedGoals));
+            render();
+        }
+
+        window.checkIn = checkIn;
+        window.fastForward = fastForward;
+        window.goBack = () => window.location.href = 'game.html';
+
+        render();
+        /*
+            const today = new Date().toDateString();
+            if (goal.lastCheckIn === today) return; // double-safety check
+
+            goal.progress = (goal.progress || 0) + 1;
+            goal.lastCheckIn = today;
+
+            // GrowPlant updates plantStage based on progress
+            GrowPlant(goal);
+
+            // Save back to localStorage
+            savedGoals[activeIndex] = goal;
+            localStorage.setItem('playerGoals', JSON.stringify(savedGoals));
+
+            render();
+        };
+        */
+    </script>
+</body>
+</html>
