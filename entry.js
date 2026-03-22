@@ -30,49 +30,75 @@ export function loadExistingPlayer() {
     fileInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (!file) return;
-        if (!file.name.endsWith('.csv')) { showError('Please select a .csv file.'); return; }
+        if (!file.name.endsWith('.csv')) { 
+          showError('Please select a .csv file.'); 
+          return; 
+        }
 
         const reader = new FileReader();
         reader.onload = function(event) {
             try {
-               const parsed = parseCSV(event.target.result);
-                localStorage.setItem('playerGoals', JSON.stringify(parsed));
+              const parsed = parseCSV(event.target.result);
+              const existing = JSON.parse(localStorage.getItem('playerGoals') || '[]');
+              if (parsed.length === 0) {
                 window.location.href = 'game.html';
-            } catch (err) { console.error(err); showError('Could not read file: ' + err.message); }
-        };
-        reader.readAsText(file);
-    });
+                return;
+              }
+              const merged = parsed.map((csvGoal, i) => {
+                const existingGoal = existing[i];
+                if (existingGoal && existingGoal.goalName === csvGoal.goalName) {
+                  return {
+                    ...csvGoal,
+                    plantStage:  existingGoal.plantStage  || csvGoal.plantStage,
+                    progress:    existingGoal.progress    || 0,
+                    lastCheckIn: existingGoal.lastCheckIn || null
+                  };
+              }
+              return csvGoal;
+            });
+            
+            localStorage.setItem('playerGoals', JSON.stringify(merged));
+            window.location.href = 'game.html';
+        } catch (err) { 
+            console.error(err); 
+            showError('Could not read file: ' + err.message); 
+        }
+      };
+      reader.readAsText(file);
+  });
 }
 
-const TOTAL_STAGES = 4;
+const TOTAL_STAGES = 5;
 
-  // Player save file: Expects header: goal, plant_type, stage
-  function parseCSV(text) {
-    const lines = text.trim().split('\n').filter(l => l.trim() !== '');
-    if (lines.length < 1) throw new Error('File must have a header row.');
+// Player save file: Expects header: goal, plant_type, stage
+function parseCSV(text) {
+  const lines = text.trim().split('\n').filter(l => l.trim() !== '');
+  if (lines.length < 1) throw new Error('File must have a header row.');
 
-    const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-    const goalIdx  = headers.indexOf('goal');
-    const plantIdx = headers.indexOf('plant_type');
-    const stageIdx = headers.indexOf('stage');
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+  const goalIdx  = headers.indexOf('goal');
+  const plantIdx = headers.indexOf('plant_type');
+  const stageIdx = headers.indexOf('stage');
 
-    if (goalIdx === -1 || plantIdx === -1 || stageIdx === -1)
-      throw new Error('CSV must have columns: goal, plant_type, stage');
+  if (goalIdx === -1 || plantIdx === -1 || stageIdx === -1)
+    throw new Error('CSV must have columns: goal, plant_type, stage');
 
-    return lines.slice(1).map(line => {
-      const cols = parseCSVLine(line);
-      const stage = parseInt(cols[stageIdx], 10);
-      return {
-        // playerGoals[currentGoalIndex].goal = 
-        goalName:      (cols[goalIdx]  || 'Unnamed Goal').trim().replace(/^"|"$/g, ''),
-        plantType: (cols[plantIdx] || 'plant').trim().replace(/^"|"$/g, ''),
-        plantStage:     isNaN(stage) ? 1 : Math.min(Math.max(stage, 1), TOTAL_STAGES)
-      };
-    });
-  }
+  return lines.slice(1).map(line => {
+    const cols = parseCSVLine(line);
+    const stage = parseInt(cols[stageIdx], 10);
+    return {
+      goalName:      (cols[goalIdx]  || 'Unnamed Goal').trim().replace(/^"|"$/g, ''),
+      plantType:     (cols[plantIdx] || 'plant').trim().replace(/^"|"$/g, ''),
+      plantStage:     isNaN(stage) ? 0 : Math.min(Math.max(stage, 0), TOTAL_STAGES - 1),
+      progress:       0,
+      lastCheckIn:    null
+    };
+  });
+}
 
   function parseCSVLine(line) {
-    const result = []; let cur = '', inQuotes = false;
+    const result = []; 
+    let cur = '', inQuotes = false;
     for (let i = 0; i < line.length; i++) {
       const ch = line[i];
       if (ch === '"') inQuotes = !inQuotes;
@@ -83,15 +109,12 @@ const TOTAL_STAGES = 4;
     return result;
   }
 
-  
-
   function showError(msg) {
     const el = document.getElementById('error');
-    el.textContent = msg; el.style.display = 'block';
-    document.getElementById('preview').style.display = 'none';
+    el.textContent = msg; 
+    el.style.display = 'block';
   }
-  function hideError() { document.getElementById('error').style.display = 'none'; }
-  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
- 
-/* One landing page, but remember which goal we're looking at*/
+  function hideError() { 
+    document.getElementById('error').style.display = 'none'; 
+  }
