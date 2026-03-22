@@ -1,8 +1,8 @@
 # Self-Growth : Team Loyola Wicys
 # Members 
-Nora
-Jennifer
-Aminat
+Nora,
+Jennifer,
+Aminat,
 Sophina
 
 # Description
