@@ -1,15 +1,17 @@
 import { Plant } from './Classes.js';
 
 
-export function MakePlant(goalId, goalsList) {
-    const goalsArray = goalsList["Plant Goals"];
-    const goal = goalsArray.find(g => g.GoalID === goalId);
-    if (goal) {
+export function MakePlant(Goal) {
+    return new Plant(Goal);
+    //const goalsArray = goalsList["Plant Goals"];
+    //const goal = goalsArray.find(g => g.Goal === goalName);
+    /*if (goal) {
         return new Plant(goal);
     } else {
-        console.error('Goal not found for: ', goalId);
+        console.error('Goal not found for: ', goal);
         return null;
     }
+    */
 }
 
 /* export to make functions public - usable*/

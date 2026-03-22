@@ -4,6 +4,7 @@ import { MakePlant, GrowPlant } from './PlantGrowth.js';
 const goalDropdown = document.getElementById('GoalSelection');
 const plantContainer = document.getElementById('plantContainer');
 const createPlant = document.getElementById("createPlant")
+import { loadGoalsOntoShelves } from './game.js';
 
 let dropdown = document.getElementById('GoalSelection');
 dropdown.length = 0;
@@ -39,21 +40,35 @@ fetch('./PlantGoals.json')
   .catch(function(err) {  
     console.error('Fetch Error -', err);  
   });
+createPlant.addEventListener('click', function() {
+    const selectedValue = dropdown.value;
+    const selectedText = dropdown.options[dropdown.selectedIndex].text;
 
-  createPlant.addEventListener('click', function() {
-    const selectedGoal = dropdown.value;
-    if (!selectedGoal){
-        alert("Please select a goal first.")
+    if (selectedValue === 'Choose Goal') {
+        alert('Please select a goal first.');
         return;
     }
-    
-    fetch('./PlantGoals.json')  
-        .then(function(response) {
-            return response.json
-        })
-        .then(function(data) {
-            console.log(data);
-        })
-        
 
-  });
+    let savedGoals = JSON.parse(localStorage.getItem('playerGoals') || '[]');
+    savedGoals = savedGoals.filter(g => g.goalName); // strip empty objects
+    savedGoals = savedGoals.slice(0, 6);             // cap at 6
+
+    if (savedGoals.length >= 6) {
+        alert('All 6 goal slots are full!');
+        return;
+    }
+
+    savedGoals.push({
+        goalName: selectedText,
+        plantType: 'fern',
+        plantStage: 0
+    });
+
+    localStorage.setItem('playerGoals', JSON.stringify(savedGoals));
+    document.getElementById('newPlantModal').style.display = 'none';
+    loadGoalsOntoShelves();
+});
+
+function closeModal() {
+    document.getElementById('newPlantModal').style.display = 'none';
+}

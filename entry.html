@@ -10,36 +10,38 @@
 <body>
     <h1>Welcome to Self Growth!</h1>
 
+
+    <h2 id="newPlayerMsg" style="display:none; text-align:center; color:#C2F593; margin-top:10px;">
+        File created! Load it in using "Load Existing Player Profile".
+    </h2>
+
     <div class="actions">
         
             <input type="file" id="fileInput" accept=".csv" style="display:none" />
 
-            <button type="button" onclick="startNewPlayer()">Start new player</button>
-            <!--Create a new csv file for the player - automatically iterate the title based on number of files - ie player03 -->
-            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
-                Load Player Profile
-            </button>
-            <p id="newPlayerMsg" style="display:none; text-align:center; color:green; margin-top:10px;">
-                File created! Load it in using "Load Existing Player Profile".
-            </p>
-            <button type="button" onclick="window.location.href='Instructions.html'">Instructions</button>
+            
+
+            <div class="buttons">
+                <button type="button" onclick="startNewPlayer()">Start new player</button>
+                <!--Create a new csv file for the player - automatically iterate the title based on number of files - ie player03 -->
+                <button class="btn btn-primary" onclick="loadExistingPlayer()">
+                    Load Player Profile
+                </button>
+                <button type="button" onclick="window.location.href='Instructions.html'">Instructions</button>
+            </div>
 
     </div>
 
     <div id="error" style="display:none; color:red;"></div>
 
-    <div id="preview" style="display:none">
-        <h2>Profile Loaded</h2>
-        <p class="filename" id="filenameDisplay"></p>
-        <ul class="goal-list" id="goalList"></ul>
-        <button class="btn btn-primary" onclick="enterGarden()">
-        Enter Your Garden →
-        </button>
-    </div>
 
 
+<script defer type="module">
+    import { startNewPlayer, loadExistingPlayer } from "./entry.js";
 
-<script src="script.js" defer></script>
+    window.startNewPlayer = startNewPlayer;
+    window.loadExistingPlayer = loadExistingPlayer;
+</script>
 
 <footer>
     <p>Produced by: Loyola WiCys + Aminat
