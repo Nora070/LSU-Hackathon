@@ -16,7 +16,7 @@ export function MakePlant(Goal) {
 
 /* export to make functions public - usable */
 export function GrowPlant(plant) {
-    plant.progress +=1;
+    //plant.progress +=1;
     console.log("Current Growth Amount: " + plant.progress)
 
     if (plant.progress >= 12) {

@@ -40,6 +40,7 @@ fetch('./PlantGoals.json')
   .catch(function(err) {  
     console.error('Fetch Error -', err);  
   });
+  
 createPlant.addEventListener('click', function() {
     const selectedValue = dropdown.value;
     const selectedText = dropdown.options[dropdown.selectedIndex].text;
@@ -58,9 +59,12 @@ createPlant.addEventListener('click', function() {
         return;
     }
 
+    const plantTypes = ['lily-of-the-valley', 'cactus', 'venus-fly-trap'];
+    const randomPlant = plantTypes[Math.floor(Math.random() * plantTypes.length)];
+
     savedGoals.push({
         goalName: selectedText,
-        plantType: 'venus-fly-trap', //'fern' 'lily-of-the-valley'
+        plantType: randomPlant, // maybe user can choose in futur
         plantStage: 0
     });
 

@@ -1,56 +1,111 @@
+html {
+    overflow: hidden;
+}
+
 body {
-  /* Matching shade of blue from image */
   background-color: #77CAE3;
   margin: 0;
+  min-height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    font-family: serif;
+}
+
+.page-wrapper {
+    width: 1280px;       /* fixed page width */
+    height: 800px;       /* fixed page height */
+    overflow: hidden;    /* nothing spills out */
+    margin: 0 auto;
+    transform-origin: top left;
+    position: relative;
 }
 
 .shelf-layer {
   position: relative;
-  width: 70%; /* want two repeats */
-  height: auto; /* Full screen height */
+  width: 100%;
+  /*width: 80%; /* want two repeats */
+  /*height: auto; /* Full screen height */
   margin: 0 auto;
-
-  aspect-ratio: 1742 / 1600;  
-  background-image: url('images/shelves.jpg');
-  background-size: 50% auto; /* 50% of the 70% container = 35% of total screen */
-  background-repeat: repeat-x;
-  background-position: left top;
+  margin-top: 20px;
+  /*background-size: 50% auto; /* 50% of the 70% container = 35% of total screen */
+  /*background-repeat: repeat-x;
+  background-position: left top;*/
   /*border: 2px solid black;*/
 }
+.shelf-img {
+    width: 110%;
+    height: auto;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    /*
+    aspect-ratio: 1742 / 1600;  
+    background-image: url('images/plants/shelf.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    aspect-ratio: 3030 / 1590;
+    */
 
+}
+/*
 .class {
     text-decoration-color: black;
 }
-
+*/
 .goals { /* Allows multiple goals to be on the same line */
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 }
 
 .goal {
     position: absolute;
-    width: 25%;
+    /*width: 20%; /*was 25*/
     transform: translate(-50%, -50%);
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
-    flex-direction: row;  /* side by side instead of stacked */
+    flex-direction: column-reverse;  /* side by side instead of stacked */
     align-items: center;
-    gap: 6px;
+    gap: 2px; /*was 6*/
 }
 
 .goal img {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
-
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
 
+.goal span {
+    font-size: 0.6rem;
+    color: black;
+    /*color: #2d4a2d;*/
+    text-align: center;
+    font-family: serif;
+    max-width: 80px;
+    word-break: break-word;
+    font-weight: bold;
 
+}
+/* Row 1 */
+#Goal1 { top: 20%; left: 39%; }
+#Goal2 { top: 20%; left: 53%; }
+
+/* Row 2 */
+#Goal3 { top: 49%; left: 39%; }
+#Goal4 { top: 49%; left: 53%; }
+
+/* Row 3 */
+#Goal5 { top: 78%; left: 39%; }
+#Goal6 { top: 78%; left: 53%; }
+/*
 #Goal1 {
     top: 32%;
     left: 28%;
@@ -80,13 +135,27 @@ body {
     top: 81%;
     left: 80%;
 }
-
+*/
 #addPlantBtn {
-    position: absolute;
+    position: fixed; /* was absllute */
     top: 10px;
     right: 10px;
     padding: 10px 20px;
     font-size: 16px;
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.buttons button {
+    padding: 10px 20px;
     background-color: #4a7c59;
     color: white;
     border: none;

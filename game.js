@@ -20,13 +20,16 @@ export function openGoal(index) {
         const btn = document.getElementById('Goal' + (i + 1));
         const img = btn.querySelector('img');
         const label = btn.querySelector('span');
+
         if (savedGoals[i] && savedGoals[i].goalName) {
             console.log(`images/${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`);
             //img.src = `images/Plans Stages${savedGoals[i].plantType}_stage${savedGoals[i].plantStage}.png`;
-            img.src = `images/Plants/${savedGoals[i].plantType}-${savedGoals[i].plantStage + 1}.png`; // sophina
+            img.src = `images/plants/${savedGoals[i].plantType}-${savedGoals[i].plantStage + 1}.png`; // sophina
             label.textContent = savedGoals[i].goalName;
         } else {
-            img.src = 'images/starterPot.png';
+            //img.src = 'images/starterPot.png';
+            //img.src = 'images/plants/empty-pot.png';
+            img.src = 'images/plants/empty-pot2.png';
             label.textContent = 'Empty';
         }
     }
